@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Minha letra em fonte</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root{
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+  --bg:#f6f5fb;--bg2:#ecebf7;--fg:#14122b;--mut:#6b6987;--card:rgba(255,255,255,.82);--solid:#ffffff;--line:rgba(30,27,75,.10);
+  --ac:#5b4bff;--ac2:#9b5cff;--acfg:#ffffff;--soft:rgba(91,75,255,.08);--shadow:0 1px 2px rgba(20,18,43,.04),0 12px 32px -12px rgba(60,50,160,.18);
+  --ok:#12a37f;--sans:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;--serif:'Instrument Serif',Georgia,serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0d0c1a;--bg2:#15132a;--fg:#f2f1ff;--mut:#9a98b8;--card:rgba(28,26,52,.72);--solid:#1c1a34;--line:rgba(255,255,255,.09);--ac:#8b7dff;--ac2:#c28bff;--acfg:#0d0c1a;--soft:rgba(139,125,255,.14);--shadow:0 1px 2px rgba(0,0,0,.3),0 14px 36px -14px rgba(0,0,0,.6)}}
+:root[data-theme="dark"]{--bg:#0d0c1a;--bg2:#15132a;--fg:#f2f1ff;--mut:#9a98b8;--card:rgba(28,26,52,.72);--solid:#1c1a34;--line:rgba(255,255,255,.09);--ac:#8b7dff;--ac2:#c28bff;--acfg:#0d0c1a;--soft:rgba(139,125,255,.14);--shadow:0 1px 2px rgba(0,0,0,.3),0 14px 36px -14px rgba(0,0,0,.6)}
+html{scroll-padding-top:env(safe-area-inset-top,0px);-webkit-text-size-adjust:100%}
+*,*:before,*:after{box-sizing:inherit}
+[hidden]{display:none!important}
+body{margin:0;color:var(--fg);font:15px/1.6 var(--sans);background:
+  radial-gradient(900px 500px at 10% -10%,color-mix(in srgb,var(--ac) 18%,transparent),transparent 60%),
+  radial-gradient(800px 480px at 100% 0%,color-mix(in srgb,var(--ac2) 16%,transparent),transparent 60%),
+  var(--bg);background-attachment:fixed;min-height:100vh;-webkit-font-smoothing:antialiased}
+main{max-width:780px;margin:0 auto;padding:44px 16px 72px}
+.hero{margin-bottom:28px}
+.pill{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:600;letter-spacing:.04em;color:var(--ac);background:var(--soft);border:1px solid var(--line);padding:6px 12px;border-radius:999px;margin-bottom:16px}
+.pill i{width:6px;height:6px;border-radius:50%;background:var(--ac);display:block}
+h1{font:400 clamp(40px,8vw,60px)/1.02 var(--serif);letter-spacing:-.02em;margin:0 0 12px}
+h1 em{font-style:italic;background:linear-gradient(120deg,var(--ac),var(--ac2));-webkit-background-clip:text;background-clip:text;color:transparent;padding-right:.06em}
+p.sub{color:var(--mut);margin:0;max-width:540px;font-size:16px}
+.steps{display:flex;gap:6px;margin:22px 0 0}
+.steps span{flex:1;height:4px;border-radius:4px;background:var(--line)}
+.steps span:first-child,.steps span:nth-child(2){background:linear-gradient(90deg,var(--ac),var(--ac2))}
+.card{position:relative;background:var(--card);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid var(--line);border-radius:20px;padding:22px;margin-bottom:16px;box-shadow:var(--shadow)}
+.card h2{display:flex;align-items:center;gap:12px;font:600 17px/1.2 var(--sans);letter-spacing:-.01em;color:var(--fg);margin:0 0 10px}
+.card h2 b{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:9px;font-size:13px;color:var(--acfg);background:linear-gradient(135deg,var(--ac),var(--ac2))}
+.card > div:first-of-type:not(.row):not(.tpl):not(.grid){color:var(--mut)}
+button,.btn{font:600 14px var(--sans);background:linear-gradient(135deg,var(--ac),var(--ac2));color:var(--acfg);border:0;border-radius:12px;padding:11px 18px;cursor:pointer;box-shadow:0 6px 16px -6px color-mix(in srgb,var(--ac) 70%,transparent);transition:transform .15s ease,box-shadow .15s ease,opacity .15s ease}
+button:hover:not(:disabled){transform:translateY(-1px);box-shadow:0 10px 22px -8px color-mix(in srgb,var(--ac) 80%,transparent)}
+button:active:not(:disabled){transform:translateY(0)}
+button:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--ac);outline-offset:2px}
+button.ghost{background:var(--solid);color:var(--fg);border:1px solid var(--line);box-shadow:none}
+button.ghost:hover:not(:disabled){border-color:var(--ac);box-shadow:none}
+button:disabled{opacity:.4;cursor:default;box-shadow:none}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.tpl{overflow-x:auto;margin-top:16px;padding:14px;border-radius:14px;background:var(--soft);border:1px dashed var(--line)}
+.tpl canvas{width:240px;height:auto;border-radius:6px;box-shadow:0 10px 30px -10px rgba(20,18,43,.35);background:#fff;display:block;margin:0 auto}
+input[type=text]{font:500 15px var(--sans);padding:11px 14px;border:1px solid var(--line);border-radius:12px;background:var(--solid);color:var(--fg);min-width:0;flex:1 1 180px}
+input[type=file]{width:100%;font:500 14px var(--sans);color:var(--mut);padding:18px;border:1.5px dashed color-mix(in srgb,var(--ac) 40%,var(--line));border-radius:14px;background:var(--soft);cursor:pointer;transition:border-color .15s}
+input[type=file]:hover{border-color:var(--ac)}
+input[type=file]::file-selector-button{font:600 14px var(--sans);background:linear-gradient(135deg,var(--ac),var(--ac2));color:var(--acfg);border:0;border-radius:10px;padding:9px 14px;margin-right:12px;cursor:pointer}
+textarea{width:100%;min-height:110px;font-size:36px;line-height:1.3;padding:16px;border:1px solid var(--line);border-radius:14px;background:var(--solid);color:var(--fg);resize:vertical}
+textarea:disabled{opacity:.7}
+#status{font:500 13.5px/1.5 var(--sans);color:var(--mut);margin-top:12px;white-space:pre-wrap}
+#status:not(:empty){padding:10px 14px;border-radius:12px;background:var(--soft);border:1px solid var(--line)}
+.err{color:#d6384a!important}
+#status.err:not(:empty){background:rgba(214,56,74,.08)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(64px,1fr));gap:8px;max-height:230px;overflow-y:auto;padding:4px;margin-top:4px}
+.gb{padding:3px;background:var(--solid);color:var(--fg);border:1px solid var(--line);border-radius:10px;box-shadow:none}
+.gb:hover:not(:disabled){box-shadow:none;border-color:var(--ac)}
+.gb.on{border-color:var(--ac);outline:2px solid var(--ac);outline-offset:0}
+.gb canvas{display:block;margin:0 auto}
+.ed{display:flex;flex-wrap:wrap;gap:20px;margin-top:16px}
+.ed canvas{background:var(--solid);border:1px solid var(--line);border-radius:14px;max-width:100%}
+#ctl{flex:1;min-width:220px;font:500 14px var(--sans)}
+#ctl label{display:block;margin:14px 0 4px;color:var(--mut)}
+#ctl label b{color:var(--fg);font-weight:600}
+#ctl input[type=range]{width:100%;accent-color:var(--ac)}
+#note{font:13px var(--sans);color:var(--mut);margin-top:12px}
+footer{text-align:center;color:var(--mut);font-size:12.5px;margin-top:28px}
+@media (max-width:520px){main{padding-top:28px}.card{padding:18px;border-radius:18px}textarea{font-size:28px}}
+</style>
+</head>
+<body>
+<main>
+<header class="hero">
+<div class="pill"><i></i>Grátis · roda no seu navegador</div>
+<h1>Minha letra em <em>fonte</em></h1>
+<p class="sub">Imprima o modelo, escreva um caractere por caixa, fotografe e exporte. Tudo roda no seu navegador, nada é enviado.</p>
+<div class="steps"><span></span><span></span><span></span><span></span></div>
+</header>
+
+<div class="card">
+<h2><b>1</b>Modelo</h2>
+<div>Baixe o PNG, imprima em A4 (sem ajustar escala) e escreva cada caractere sobre a linha de base, dentro da caixa. Use caneta escura.</div>
+<div class="row" style="margin-top:14px"><button id="dlTpl">Baixar modelo (PNG)</button></div>
+<div class="tpl"><canvas id="tpl" width="1240" height="1754"></canvas></div>
+</div>
+
+<div class="card">
+<h2><b>2</b>Enviar foto ou scan</h2>
+<div>A folha precisa mostrar os 4 quadrados pretos dos cantos. Foto reta, bem iluminada, JPG ou PNG.</div>
+<div class="row" style="margin-top:14px"><input type="file" id="file" accept="image/png,image/jpeg"></div>
+<div id="status"></div>
+</div>
+
+<div class="card" id="edcard" hidden>
+<h2><b>3</b>Ajustar letras</h2>
+<div style="margin-bottom:10px">As letras já são alinhadas automaticamente pela linha de base (laranja). Clique numa letra só se quiser refinar: g, j, p, q, y e a pontuação ficam em posições próprias, então não encoste a parte de baixo delas na linha laranja. Use as linhas tracejadas (maiúscula, altura do x) como referência.</div>
+<div id="grid" class="grid"></div>
+<div class="ed"><canvas id="ec" width="380" height="420"></canvas><div id="ctl"></div></div>
+</div>
+
+<div class="card">
+<h2><b>4</b>Testar e exportar</h2>
+<textarea id="prev" disabled>The quick brown fox jumps over the lazy dog 0123456789</textarea>
+<div class="row" style="margin-top:14px">
+<input type="text" id="fname" value="MinhaLetra" aria-label="Nome da fonte">
+<button id="exp" disabled>Exportar fonte</button>
+</div>
+<div id="note">O arquivo exportado é OpenType (.otf).</div>
+</div>
+<footer>Feito com a sua letra ✍️</footer>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/opentype.js/1.3.4/opentype.min.js"></script>
+<script>
+const W=1240,H=1754,COLS=10,GX=100,GY=170,CW=104,CH=144,BASE=104,MK=[[60,60],[1180,60],[60,1694],[1180,1694]];
+const CHARS="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789.,!?-':;()&\"ÁÀÂÃÇÉÊÍÓÔÕÚáàâãçéêíóôõú";
+const $=id=>document.getElementById(id);
+let fontBuf=null,lastItems=null,famN=0,downloads=null;
+const localDL={save:async({filename,data})=>{const b=data instanceof Blob?data:new Blob([data]);const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=filename;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}};
+if(typeof claude!=='undefined'&&claude.use)claude.use("downloads").then(d=>{downloads=d||localDL}).catch(()=>{downloads=localDL});else downloads=localDL;
+
+function drawTemplate(){
+  const c=$('tpl'),x=c.getContext('2d');
+  x.fillStyle='#fff';x.fillRect(0,0,W,H);
+  x.fillStyle='#000';
+  MK.forEach(([cx,cy])=>x.fillRect(cx-28,cy-28,56,56));
+  x.fillStyle='#aaa';x.font='20px sans-serif';
+  x.fillText('Escreva um caractere por caixa, apoiado na linha de base. Nao escreva sobre as bordas.',100,120);
+  for(let i=0;i<CHARS.length;i++){
+    const gx=GX+(i%COLS)*CW,gy=GY+Math.floor(i/COLS)*CH;
+    x.strokeStyle='#bbb';x.lineWidth=2;x.strokeRect(gx,gy,CW,CH);
+    x.strokeStyle='#ddd';x.beginPath();x.moveTo(gx+4,gy+BASE);x.lineTo(gx+CW-4,gy+BASE);x.stroke();
+    x.fillStyle='#bbb';x.font='14px sans-serif';x.fillText(CHARS[i],gx+6,gy+16);
+  }
+}
+drawTemplate();
+$('dlTpl').onclick=()=>{
+  if(!downloads){setStatus('Download indisponível aqui. Clique com o botão direito na imagem do modelo e salve.',1);return}
+  $('tpl').toBlob(b=>downloads.save({filename:'modelo-letra.png',data:b}).catch(e=>setStatus('Download: '+(e.message||e.code),1)),'image/png');
+};
+function setStatus(t,e){const s=$('status');s.textContent=t;s.className=e?'err':''}
+
+function findMarkers(img){
+  const sc=Math.min(1,1000/Math.max(img.width,img.height)),w=Math.round(img.width*sc),h=Math.round(img.height*sc);
+  const c=document.createElement('canvas');c.width=w;c.height=h;const x=c.getContext('2d');x.drawImage(img,0,0,w,h);
+  const d=x.getImageData(0,0,w,h).data,g=new Uint8Array(w*h),hist=new Array(256).fill(0);
+  for(let i=0;i<w*h;i++){g[i]=(d[i*4]*.3+d[i*4+1]*.59+d[i*4+2]*.11)|0;hist[g[i]]++}
+  let acc=0,p90=255;for(let i=0;i<256;i++){acc+=hist[i];if(acc>=w*h*.9){p90=i;break}}
+  const thr=p90*.5,seen=new Uint8Array(w*h),best=[null,null,null,null];
+  for(let s=0;s<w*h;s++){
+    if(seen[s]||g[s]>=thr)continue;
+    let st=[s],a=0,x0=w,x1=0,y0=h,y1=0,sx=0,sy=0;seen[s]=1;
+    while(st.length){const p=st.pop(),px=p%w,py=(p/w)|0;a++;sx+=px;sy+=py;
+      if(px<x0)x0=px;if(px>x1)x1=px;if(py<y0)y0=py;if(py>y1)y1=py;
+      for(const q of [p-1,p+1,p-w,p+w]){if(q<0||q>=w*h||seen[q]||g[q]>=thr)continue;if((q===p-1&&px===0)||(q===p+1&&px===w-1))continue;seen[q]=1;st.push(q)}}
+    const bw=x1-x0+1,bh=y1-y0+1,asp=bw/bh;
+    if(bw<8||asp<.7||asp>1.4||a/(bw*bh)<.8)continue;
+    const cx=sx/a,cy=sy/a,qi=(cy>h/2?2:0)+(cx>w/2?1:0);
+    if(!best[qi]||a>best[qi].a)best[qi]={a,x:cx/sc,y:cy/sc};
+  }
+  return best.every(Boolean)?best:null;
+}
+
+function grab(img){
+  const c=document.createElement('canvas');c.width=img.width;c.height=img.height;const x=c.getContext('2d');x.drawImage(img,0,0);
+  return{sd:x.getImageData(0,0,img.width,img.height).data,sw:img.width,sh:img.height}}
+function rectGray(src,m){
+  const{sd,sw,sh}=src,wg=new Uint8Array(W*H).fill(255);
+  for(let y=0;y<H;y++){const v=(y-60)/1634;for(let xx=0;xx<W;xx++){const u=(xx-60)/1120;
+    const ix=Math.round((1-v)*((1-u)*m[0].x+u*m[1].x)+v*((1-u)*m[2].x+u*m[3].x)),iy=Math.round((1-v)*((1-u)*m[0].y+u*m[1].y)+v*((1-u)*m[2].y+u*m[3].y));
+    if(ix<0||iy<0||ix>=sw||iy>=sh)continue;
+    const k=(iy*sw+ix)*4;wg[y*W+xx]=(sd[k]*.3+sd[k+1]*.59+sd[k+2]*.11)|0}}
+  return wg}
+// Acha a grade real da folha (linhas das caixas e linha de base) em vez de supor posições fixas.
+function detectGrid(wg){
+  const NR=Math.ceil(CHARS.length/COLS);
+  const def=()=>{const xl=[],yl=[],bl=[];for(let i=0;i<=COLS;i++)xl.push(GX+i*CW);for(let r=0;r<=NR;r++)yl.push(GY+r*CH);for(let r=0;r<NR;r++)bl.push(yl[r]+BASE);return{xl,yl,bl,ok:false}};
+  const hist=new Uint32Array(256);let tot=0;
+  for(let y=120;y<1640;y+=3)for(let x=100;x<1140;x+=3){hist[wg[y*W+x]]++;tot++}
+  let acc=0,bg=255;for(let i=0;i<256;i++){acc+=hist[i];if(acc>=tot*.9){bg=i;break}}
+  if(bg<80)return def();
+  const dk=v=>{const d=(bg-v)/bg;return d<=0?0:d>=.3?1:d/.3};
+  const cx=new Float32Array(W),ry=new Float32Array(H);
+  for(let x=0;x<W;x++){let s=0;for(let y=110;y<1640;y++)s+=dk(wg[y*W+x]);cx[x]=s/1530}
+  for(let y=0;y<H;y++){let s=0;for(let x=100;x<1140;x++)s+=dk(wg[y*W+x]);ry[y]=s/1040}
+  const sm=p=>{const o=new Float32Array(p.length);for(let i=0;i<p.length;i++){let m=0;for(let d=-2;d<=2;d++){const v=p[i+d];if(v>m)m=v}o[i]=m}return o};
+  const fit=(p,n,P0,P1,o0,o1,lim)=>{const s=sm(p);let b={s:-1,o:o0,P:P0};
+    for(let P=P0;P<=P1;P+=.25)for(let o=o0;o<=o1;o+=.5){if(o+n*P>lim)break;let t=0;for(let i=0;i<=n;i++)t+=s[Math.round(o+i*P)];if(t>b.s)b={s:t,o,P}}
+    const ls=[];let q=0;
+    for(let i=0;i<=n;i++){const c=Math.round(b.o+i*b.P);let bi=c,bv=-1;for(let d=-3;d<=3;d++){const v=p[c+d];if(v>bv){bv=v;bi=c+d}}
+      if(bv>=.25){ls.push(bi);q+=bv}else ls.push(b.o+i*b.P)}
+    return{ls,q:q/(n+1)}};
+  const X=fit(cx,COLS,88,135,30,200,W-10),Y=fit(ry,NR,115,175,60,260,H-10);
+  if(X.q<.4||Y.q<.4)return def();
+  const rat=[];
+  for(let r=0;r<NR;r++){
+    const y0=Y.ls[r],h=Y.ls[r+1]-y0,nc=Math.min(COLS,CHARS.length-r*COLS),xa=Math.round(X.ls[0]+8),xb=Math.round(X.ls[nc]-8),ya=Math.round(y0+.55*h),yb=Math.round(y0+.93*h),rp=[];
+    for(let y=ya-1;y<=yb+1;y++){let s=0;for(let x=xa;x<xb;x++)s+=dk(wg[y*W+x]);rp.push(s/(xb-xa))}
+    let bv=0,by=-1;for(let y=ya;y<=yb;y++){const v=Math.max(rp[y-ya],rp[y-ya+1],rp[y-ya+2]);if(v>bv){bv=v;by=y}}
+    if(by>=0&&bv>=.2)rat.push((by-y0)/h)}
+  rat.sort((a,b)=>a-b);
+  const ratio=rat.length>=3?rat[rat.length>>1]:BASE/CH;
+  const bl=[];for(let r=0;r<NR;r++)bl.push(Y.ls[r]+ratio*(Y.ls[r+1]-Y.ls[r]));
+  return{xl:X.ls,yl:Y.ls,bl,ok:true}}
+
+function contours(F,w,h){
+  const nx=new Map(),P=e=>{const v=e&1,i=e>>1,x=i%w,y=(i/w)|0,a=F[i],t=a/(a-(v?F[i+w]:F[i+1]));return v?[x,y+t]:[x+t,y]};
+  for(let y=0;y<h-1;y++)for(let x=0;x<w-1;x++){
+    const i=y*w+x,k=(F[i]>0?1:0)|(F[i+1]>0?2:0)|(F[i+w+1]>0?4:0)|(F[i+w]>0?8:0);if(!k||k===15)continue;
+    const T=i*2,B=(i+w)*2,L=i*2+1,R=(i+1)*2+1,a=(f,t)=>nx.set(f,t),cin=(F[i]+F[i+1]+F[i+w]+F[i+w+1])>0;
+    switch(k){case 1:a(L,T);break;case 2:a(T,R);break;case 4:a(R,B);break;case 8:a(B,L);break;case 3:a(L,R);break;case 6:a(T,B);break;case 12:a(R,L);break;case 9:a(B,T);break;
+      case 7:a(L,B);break;case 11:a(B,R);break;case 13:a(R,T);break;case 14:a(T,L);break;
+      case 5:if(cin){a(R,T);a(L,B)}else{a(L,T);a(R,B)}break;case 10:if(cin){a(T,L);a(B,R)}else{a(T,R);a(B,L)}}}
+  const loops=[],seen=new Set();
+  for(const s of nx.keys()){if(seen.has(s))continue;let lp=[],e=s;
+    while(e!==undefined&&!seen.has(e)){seen.add(e);lp.push(P(e));e=nx.get(e)}
+    if(lp.length<8)continue;
+    for(let it=0;it<2;it++){const n=lp.length;lp=lp.map((p,j)=>{const a=lp[(j+n-1)%n],b=lp[(j+1)%n];return[(a[0]+2*p[0]+b[0])/4,(a[1]+2*p[1]+b[1])/4]})}
+    let ar=0;for(let j=0;j<lp.length;j++){const p=lp[j],q=lp[(j+1)%lp.length];ar+=p[0]*q[1]-q[0]*p[1]}
+    if(Math.abs(ar/2)>=10)loops.push(lp)}
+  return loops}
+function extract2(src,m,L){
+  const{sd,sw,sh}=src;
+  const G=(ix,iy)=>{ix=Math.min(sw-1,Math.max(0,ix));iy=Math.min(sh-1,Math.max(0,iy));const k=(iy*sw+ix)*4;return sd[k]*.3+sd[k+1]*.59+sd[k+2]*.11};
+  const samp=(sx,sy)=>{const x0=Math.floor(sx),y0=Math.floor(sy),fx=sx-x0,fy=sy-y0;return(G(x0,y0)*(1-fx)+G(x0+1,y0)*fx)*(1-fy)+(G(x0,y0+1)*(1-fx)+G(x0+1,y0+1)*fx)*fy};
+  const SS=2,INS=6,items=[],missing=[];
+  for(let i=0;i<CHARS.length;i++){
+    const col=i%COLS,row=(i/COLS)|0,cx0=L.xl[col],cx1=L.xl[col+1],cy0=L.yl[row],cy1=L.yl[row+1];
+    const rx=cx0+INS,ry=cy0+INS,rw=Math.round(cx1-cx0)-2*INS,rh=Math.round(cy1-cy0)-2*INS,fw=rw*SS,fh=rh*SS,g=new Float32Array(fw*fh),b=new Float32Array(fw*fh);
+    for(let y=0;y<fh;y++){const v=(ry+(y+.5)/SS-60)/1634;for(let xx=0;xx<fw;xx++){const u=(rx+(xx+.5)/SS-60)/1120;
+      g[y*fw+xx]=samp((1-v)*((1-u)*m[0].x+u*m[1].x)+v*((1-u)*m[2].x+u*m[3].x),(1-v)*((1-u)*m[0].y+u*m[1].y)+v*((1-u)*m[2].y+u*m[3].y))}}
+    for(let y=0;y<Math.min(fh,16*SS);y++)for(let xx=0;xx<Math.min(fw,20*SS);xx++)g[y*fw+xx]=255; // rótulo impresso no canto da caixa
+    for(let y=0;y<fh;y++)for(let xx=0;xx<fw;xx++){let s=0;for(let dy=-1;dy<2;dy++)for(let dx=-1;dx<2;dx++)s+=g[Math.min(fh-1,Math.max(0,y+dy))*fw+Math.min(fw-1,Math.max(0,xx+dx))];b[y*fw+xx]=s/9}
+    const thr=b.slice().sort()[Math.floor(b.length*.9)]*.68,w2=fw+2,F=new Float32Array(w2*(fh+2)).fill(-1);let n=0;
+    for(let y=0;y<fh;y++)for(let xx=0;xx<fw;xx++){const f=thr-b[y*fw+xx];if(f>0)n++;F[(y+1)*w2+xx+1]=f}
+    if(n<15*SS*SS){missing.push(CHARS[i]);continue}
+    const loops=contours(F,w2,fh+2).map(lp=>lp.map(q=>[(q[0]-1)/SS,(q[1]-1)/SS]));
+    if(!loops.length){missing.push(CHARS[i]);continue}
+    let x0=1e9,x1=-1e9;loops.forEach(lp=>lp.forEach(q=>{if(q[0]<x0)x0=q[0];if(q[0]>x1)x1=q[0]}));
+    items.push({ch:CHARS[i],loops,bx0:x0,w:x1-x0,bl:L.bl[row]-ry,sz:1,dy:0,l:40,r:40});
+  }
+  return{items,missing}}
+const S=1000/CH;
+let MET={c:700,a:760,x:480,d:-200};
+function inkY(it){const ys=[];for(const lp of it.loops)for(const q of lp)ys.push(q[1]);ys.sort((a,b)=>a-b);const n=ys.length;return{t:ys[Math.floor(n*.01)],b:ys[Math.min(n-1,Math.floor(n*.97))]}}
+function autoNorm(its){
+  const med=a=>{if(!a.length)return null;a=a.slice().sort((x,y)=>x-y);return a[a.length>>1]};
+  const nfd=ch=>ch.normalize('NFD'),base=ch=>nfd(ch)[0],acc=ch=>nfd(ch).length>1;
+  const GA='bdfhkl',GXH='acemnorsuvwxz';
+  const kind=ch=>{
+    if(acc(ch))return(ch==='Ç'||ch==='ç')?'top':'acc';
+    if(ch==='Q')return'top';
+    if(/[A-PR-Z0-9]/.test(ch))return'c';
+    if(GA.includes(ch))return'a';
+    if(GXH.includes(ch))return'x';
+    if(ch==='i'||ch==='t')return'free';
+    if('gpqyj'.includes(ch))return'top';
+    return'punct'};
+  its.forEach(t=>{const m=inkY(t);t._t=m.t;t._b=m.b;t._h=Math.max(1,m.b-m.t);t._k=kind(t.ch)});
+  // 1) tamanho por grupo (altura da tinta, independente de onde a letra foi escrita)
+  const Hh={c:[],a:[],x:[]},SZ={};
+  its.forEach(t=>{if(Hh[t._k])Hh[t._k].push(t._h)});
+  const mh={c:med(Hh.c),a:med(Hh.a),x:med(Hh.x)};
+  const szl={c:[],a:[],x:[]};
+  its.forEach(t=>{if(mh[t._k]){const z=Math.min(2,Math.max(.5,mh[t._k]/t._h));SZ[t.ch]=z;szl[t._k].push(z)}});
+  const medX=med(szl.x)||med(szl.c)||1,medC=med(szl.c)||medX;
+  const medAll=med([].concat(szl.c,szl.a,szl.x))||1;
+  const Hc=mh.c?mh.c*S:700,Hx=mh.x?mh.x*S:480,Ha=mh.a?mh.a*S:760;
+  // 2) linha de base: a parte de baixo da tinta vai para y=0
+  const offs=[],byCh={};its.forEach(t=>byCh[t.ch]=t);
+  const setBottom=(t,z)=>{t.sz=z;t.dy=(t._b-t.bl)*z*S;if(t._k==='c'||t._k==='a'||t._k==='x')offs.push(t._b-t.bl)};
+  const setTop=(t,z,target)=>{t.sz=z;t.dy=target-(t.bl-t._t)*z*S};
+  its.forEach(t=>{const k=t._k;
+    if(k==='c'||k==='a'||k==='x')setBottom(t,SZ[t.ch]||1);
+    else if(k==='free')setBottom(t,medX);
+    else if(k==='acc'){const b=base(t.ch);setBottom(t,SZ[b]||(/[A-Z0-9]/.test(b)?medC:medX))}});
+  // 3) letras com cauda/descendente: o topo da tinta vai para a altura de referência
+  const ti=byCh['i'],Hi=ti?(ti._b-ti._t)*ti.sz*S:Ha,dsc=[];
+  its.forEach(t=>{if(t._k!=='top')return;const ch=t.ch;
+    if(ch==='Q')setTop(t,medC,Hc);
+    else if(ch==='Ç')setTop(t,SZ['C']||medC,Hc);
+    else if(ch==='ç')setTop(t,SZ['c']||medX,Hx);
+    else if(ch==='j')setTop(t,medX,Hi);
+    else{setTop(t,medX,Hx);dsc.push((t.bl-t._b)*t.sz*S+t.dy)}});
+  // 4) pontuação e símbolos: mantêm a posição escrita, com o mesmo desvio de linha das letras
+  const off=med(offs)||0;
+  its.forEach(t=>{if(t._k==='punct'){t.sz=medAll;t.dy=off*medAll*S}});
+  // 5) escala global: maiúscula = 700 unidades (proporção normal de uma fonte)
+  const f=Math.min(4,Math.max(.3,700/Hc));
+  its.forEach(t=>{t.sz*=f;t.dy*=f;t.l=40;t.r=40;t.auto={sz:t.sz,dy:t.dy}});
+  const dd=med(dsc);MET={c:Hc*f,a:Ha*f,x:Hx*f,d:dd!=null?dd*f:-200};
+}
+function buildFont(items){
+  const mk=(name,uni,adv,path)=>new opentype.Glyph({name,unicode:uni,advanceWidth:adv,path});
+  const glyphs=[mk('.notdef',0,500,new opentype.Path()),mk('space',32,300,new opentype.Path())];
+  for(const it of items){const p=new opentype.Path(),c=it.sz*S;
+    for(const lp of it.loops){lp.forEach((q,j)=>{const X=it.l+(q[0]-it.bx0)*c,Y=(it.bl-q[1])*c+it.dy;j?p.lineTo(X,Y):p.moveTo(X,Y)});p.close()}
+    const u=it.ch.charCodeAt(0);glyphs.push(mk('uni'+u.toString(16).padStart(4,'0'),u,Math.round(it.w*c+it.l+it.r),p))}
+  const f=new opentype.Font({familyName:$('fname').value||'MinhaLetra',styleName:'Regular',unitsPerEm:1000,ascender:800,descender:-200,glyphs});
+  return f.toArrayBuffer();
+}
+
+$('file').onchange=async e=>{
+  const f=e.target.files[0];if(!f)return;
+  $('exp').disabled=true;$('prev').disabled=true;setStatus('Processando…');
+  try{
+    const img=await createImageBitmap(f);
+    const m=findMarkers(img);
+    if(!m){setStatus('Não achei os 4 quadrados dos cantos. Fotografe a folha inteira, reta e com boa luz.',1);return}
+    await new Promise(r=>setTimeout(r,30));
+    const src=grab(img),L=detectGrid(rectGray(src,m)),{items,missing}=extract2(src,m,L);autoNorm(items);window._grid=L;
+    lastItems=items;fontBuf=buildFont(items);
+    famN++;const fam='inkprev'+famN,ff=new FontFace(fam,fontBuf.slice(0));
+    await ff.load();document.fonts.add(ff);$('prev').style.fontFamily="'"+fam+"',serif";
+    $('prev').disabled=false;$('exp').disabled=false;buildEditor();
+    setStatus((CHARS.length-missing.length)+' de '+CHARS.length+' caracteres capturados.'+(L.ok?'':'\nAviso: não achei a grade da folha, usei o layout padrão do modelo.')+(missing.length?'\nSem tinta: '+missing.join(' '):''));
+  }catch(err){setStatus('Erro: '+(err.message||err),1)}
+};
+
+let cur=null,tm=0;const K=.35,ctls={};
+function drawG(c,it,k,sel){const x=c.getContext('2d'),B=900*k,cc=it.sz*S;x.clearRect(0,0,c.width,c.height);
+  x.lineWidth=1;
+  if(sel){x.setLineDash([4,4]);x.font='11px system-ui,sans-serif';
+    [[MET.c,'maiúscula','#5b4bff'],[MET.a,'ascendente','#a78bfa'],[MET.x,'altura do x','#12a37f'],[MET.d,'descendente','#999']].forEach(([u,t,col])=>{const y=B-u*k;x.strokeStyle=col;x.beginPath();x.moveTo(0,y);x.lineTo(c.width,y);x.stroke();x.fillStyle=col;x.fillText(t,c.width-x.measureText(t).width-4,y-3)});x.setLineDash([])}
+  x.strokeStyle='#d35400';x.beginPath();x.moveTo(0,B);x.lineTo(c.width,B);x.stroke();
+  x.fillStyle=getComputedStyle(document.body).color;
+  x.beginPath();for(const lp of it.loops){lp.forEach((q,j)=>{const X=(it.l+(q[0]-it.bx0)*cc)*k,Y=B-((it.bl-q[1])*cc+it.dy)*k;j?x.lineTo(X,Y):x.moveTo(X,Y)});x.closePath()}x.fill('nonzero');
+  if(sel){x.strokeStyle='#5b4bff';const a=(it.w*cc+it.l+it.r)*k;x.beginPath();x.moveTo(.5,0);x.lineTo(.5,c.height);x.moveTo(a,0);x.lineTo(a,c.height);x.stroke()}}
+async function refreshPreview(){try{const b=buildFont(lastItems);famN++;const fam='inkprev'+famN,ff=new FontFace(fam,b);await ff.load();document.fonts.add(ff);$('prev').style.fontFamily="'"+fam+"',serif"}catch(e){}}
+function paint(){drawG($('ec'),cur,K,1);drawG(cur.th,cur,.06,0)}
+function pick(i){cur=lastItems[i];document.querySelectorAll('.gb').forEach((b,j)=>b.classList.toggle('on',j===i));
+  for(const k in ctls){ctls[k].i.value=cur[k];ctls[k].v.textContent=(+cur[k]).toFixed(k==='sz'?2:0)}paint()}
+function buildEditor(){
+  $('edcard').hidden=false;const g=$('grid');g.innerHTML='';
+  lastItems.forEach((it,i)=>{const b=document.createElement('button');b.className='gb';b.title=it.ch;
+    const c=document.createElement('canvas');c.width=64;c.height=72;b.appendChild(c);it.th=c;b.onclick=()=>pick(i);g.appendChild(b);drawG(c,it,.06,0)});
+  const ctl=$('ctl');ctl.innerHTML='';
+  [['sz','Tamanho',.3,5,.01],['dy','Posição vertical',-600,600,1],['l','Margem esquerda',0,250,1],['r','Margem direita',0,250,1]].forEach(([k,n,a,b,st])=>{
+    const l=document.createElement('label'),v=document.createElement('b'),i=document.createElement('input');
+    l.append(n+': ',v);i.type='range';i.min=a;i.max=b;i.step=st;ctls[k]={i,v};
+    i.oninput=()=>{cur[k]=+i.value;v.textContent=(+i.value).toFixed(k==='sz'?2:0);paint();clearTimeout(tm);tm=setTimeout(refreshPreview,300)};
+    ctl.append(l,i)});
+  const row=document.createElement('div');row.className='row';row.style.marginTop='18px';
+  const b1=document.createElement('button');b1.className='ghost';b1.textContent='Restaurar letra';
+  b1.onclick=()=>{Object.assign(cur,{sz:cur.auto.sz,dy:cur.auto.dy,l:40,r:40});pick(lastItems.indexOf(cur));refreshPreview()};
+  const b2=document.createElement('button');b2.className='ghost';b2.textContent='Tamanho para todas';
+  b2.onclick=()=>{lastItems.forEach(t=>{t.sz=cur.sz;drawG(t.th,t,.06,0)});refreshPreview()};
+  const b3=document.createElement('button');b3.className='ghost';b3.textContent='Auto-ajustar tudo';
+  b3.onclick=()=>{autoNorm(lastItems);lastItems.forEach(t=>drawG(t.th,t,.06,0));pick(lastItems.indexOf(cur));refreshPreview()};
+  const nudge=d=>{cur.dy+=d;ctls.dy.i.value=cur.dy;ctls.dy.v.textContent=cur.dy.toFixed(0);paint();clearTimeout(tm);tm=setTimeout(refreshPreview,300)};
+  const b4=document.createElement('button');b4.className='ghost';b4.textContent='Subir ▲';b4.onclick=()=>nudge(10);
+  const b5=document.createElement('button');b5.className='ghost';b5.textContent='Descer ▼';b5.onclick=()=>nudge(-10);
+  row.append(b4,b5,b1,b2,b3);ctl.append(row);pick(0)}
+$('exp').onclick=()=>{
+  if(!fontBuf)return;
+  if(!downloads){setStatus('Download indisponível nesta visualização.',1);return}
+  const name=($('fname').value||'MinhaLetra').replace(/[^\w-]/g,'');
+  downloads.save({filename:name+(typeof claude!=='undefined'?'.ttf':'.otf'),data:buildFont(lastItems)}).catch(e=>setStatus('Download: '+(e.message||e.code),1));
+};
+</script>
+</body>
+</html>
